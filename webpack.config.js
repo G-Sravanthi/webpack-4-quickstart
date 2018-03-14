@@ -6,9 +6,13 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader"
-        }
+        use: [{
+          loader: "babel-loader",
+          options: {
+            cacheDirectory: true,
+            plugins: ['react-hot-loader/babel'],
+          }
+        }]
       },
       {
         test: /\.html$/,
@@ -26,5 +30,6 @@ module.exports = {
       template: "./src/index.html",
       filename: "./index.html"
     })
-  ]
+  ],
+  optimization: { minimize: false }
 };
